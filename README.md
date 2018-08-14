@@ -38,8 +38,8 @@ a	    2	    3	    2
 1. students-grades-/-assignments-classes
 
 # To do
-[x] K6 Okay example
-[x] High sclool less nasty example
-[x] High school nasty example
-[x] High school pretty example
-[x] College okay example
+- [x] K6 Okay example
+- [x] High sclool less nasty example
+- [x] High school nasty example
+- [x] High school pretty example
+- [x] College okay example
