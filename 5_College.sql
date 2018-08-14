@@ -431,19 +431,62 @@ create table faculty (
 insert into faculty
 (id, first_name, last_name, position)
 values
-(1, 'Gunilla', 'Nijs', 'teacher'),
-(2, 'Kamilah', 'Hounihan', 'teacher'),
-(3, 'Xaviera', 'Dixson', 'teacher'),
-(4, 'Husein', 'Spellsworth', 'teacher'),
-(5, 'Patrizius', 'Orrell', 'teacher'),
-(6, 'Eleni', 'Lukovic', 'teacher'),
-(7, 'Bing', 'McPhelimey', 'teacher'),
-(8, 'Jefferson', 'Farens', 'teacher'),
-(9, 'Xylina', 'Gehricke', 'principal'),
-(10, 'Tamarra', 'Greatbach', 'secretary'),
-(11, 'Thorny', 'Woodage', 'custodian'),
-(12, 'Renelle', 'Petegre', 'lunch specialist'),
-(13, 'Matty', 'Dyett', 'vice principal');
+(1, 'Gunilla', 'Nijs', 'professor'),
+(2, 'Kamilah', 'Hounihan', 'professor'),
+(3, 'Xaviera', 'Dixson', 'professor'),
+(4, 'Husein', 'Spellsworth', 'professor'),
+(5, 'Patrizius', 'Orrell', 'adjunctprofessor'),
+(6, 'Eleni', 'Lukovic', 'adjunct professor'),
+(7, 'Bing', 'McPhelimey', 'adjunct professor'),
+(8, 'Jefferson', 'Farens', 'adjunct professor'),
+(9, 'Xylina', 'Gehricke', 'dean'),
+(10, 'Tamarra', 'Greatbach', 'counselor'),
+(11, 'Thorny', 'Woodage', 'gamekeeper'),
+(12, 'Renelle', 'Petegre', 'head of admissions'),
+(13, 'Matty', 'Dyett', 'assistant dean');
+
+drop table if exists teachers_classes;
+create table teachers_classes (
+	id INT,
+	class_id INT,
+	teacher_id INT
+);
+
+insert into teachers_classes
+(id, class_id, teacher_id)
+values
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 2),
+(6, 6, 2),
+(7, 7, 2),
+(8, 8, 2),
+(9, 9, 3),
+(10, 10, 3),
+(11, 11, 3),
+(12, 12, 3),
+(13, 13, 4),
+(14, 14, 4),
+(15, 15, 4),
+(16, 16, 4),
+(17, 1, 5),
+(18, 2, 5),
+(19, 3, 5),
+(20, 4, 5),
+(21, 5, 6),
+(22, 6, 6),
+(23, 7, 6),
+(24, 8, 6),
+(25, 9, 7),
+(26, 10, 7),
+(27, 11, 7),
+(28, 12, 7),
+(29, 13, 8),
+(30, 14, 8),
+(31, 15, 8),
+(32, 16, 8);
 
 drop table if exists classes;
 create table classes
@@ -1176,7 +1219,8 @@ values
 select * from students s
 join students_classes sc on  s.id = sc.student_id
 join classes c on c.id = sc.class_id
-join faculty f on c.teacher_id = f.id
+join teachers_classes tc on c.id = tc.class_id
+join faculty f on tc.teacher_id = f.id
 join assignments a on a.class_id = c.id
 join grades g on g.assignment_id = a.id and g.student_id = s.id
 order by s.id, c.id;

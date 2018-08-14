@@ -41,6 +41,5 @@ a	    2	    3	    2
 [x] K6 Okay example
 [x] High sclool less nasty example
 [x] High school nasty example
-[ ] High school pretty example
-[ ] College okay example
- 
+[x] High school pretty example
+[x] College okay example
